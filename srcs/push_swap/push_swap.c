@@ -12,65 +12,63 @@
 
 #include "../../include/push_swap.h"
 
-static int is_numeric(char *str)
+static void free_split(char **split)
 {
     int i = 0;
 
-    if (!str || !*str) // Check for empty string
-        return (0);
-
-    if (str[i] == '+' || str[i] == '-') // Allow leading sign
-        i++;
-
-    if (!str[i]) // Ensure at least one digit follows sign
-        return (0);
-
-    while (str[i])
+    if (!split) // Check if split is NULL before attempting to free
+        return;
+    
+    while (split[i]) // Free each allocated string
     {
-        if (!(str[i] >= '0' && str[i] <= '9')) // Reject non-numeric characters
-            return (0);
+        free(split[i]);
         i++;
     }
-    return (1);
-}
-
-static int  validate_args(char **argv)
-{
-    int i = 1;
-
-    while (argv[i])
-    {
-        if (!is_numeric(argv[i])) // Check if the argument is a valid number
-        {
-            write(2, "Error\n", 6); // Print error message to stderr
-            return (0);
-        }
-        i++;
-    }
-    return (1);
+    free(split); // Free the array itself
 }
 
 int main(int argc, char **argv)
 {
     t_stack_node  *a;
     t_stack_node  *b;
+    char **split_args = NULL; // Store split arguments separately
 
     a = NULL;
     b = NULL;
 
-    if (argc == 1 || (argc == 2 && (!argv[1][0] || error_syntax(argv[1]))))
+    // Case where no arguments or only empty input is provided
+    if (argc == 1 || (argc == 2 && !argv[1][0])) 
     {
-        write(2, "Error\n", 6);
+        ft_printf("Error\n");
         return (1);
     }
 
+    // Handle case where input is a single quoted string (e.g., "./push_swap '3 2 1'")
     if (argc == 2)
-        argv = push_swap_split(argv[1], ' ');
+    {
+        split_args = push_swap_split(argv[1], ' ');
+        if (!split_args || !split_args[0]) // If splitting failed or returned an empty array
+        {
+            ft_printf("Error\n");
+            free_split(split_args); // Free memory before exiting
+            return (1);
+        }
+        argv = split_args;
+    }
+    else
+    {
+        argv++; // Skip program name for normal input
+    }
 
-    if (!validate_args(argv)) // Validate that all arguments are numbers
+    // Ensure argv contains at least one valid argument
+    if (!argv[0])
+    {
+        ft_printf("Error\n");
+        free_split(split_args); // Free memory before exiting
         return (1);
+    }
 
-    init_stack_a(&a, argv + 1);
+    init_stack_a(&a, argv); // Pass the split arguments to stack initialization
 
     if (!stack_sorted(a))
     {
@@ -83,8 +81,12 @@ int main(int argc, char **argv)
     }
 
     free_stack(&a);
+    free_split(split_args); // Free allocated memory
+
     return (0);
 }
+
+
 
 // int main(int argc, char **argv)
 // {
