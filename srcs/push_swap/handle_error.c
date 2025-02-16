@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
-#include <ctype.h>
+
 int error_syntax(char *str)
 {
   if (!str || !*str) // Check for empty string
@@ -67,9 +67,10 @@ void  free_stack(t_stack_node **stack)
   *stack = NULL;
 }
 
-void  free_error(t_stack_node **a)
+void  free_error(t_stack_node **a, char **argv)
 {
   free_stack(a);
+  ft_free_double_p((void **)argv);
   ft_printf("Error\n");
   exit (1);
 }

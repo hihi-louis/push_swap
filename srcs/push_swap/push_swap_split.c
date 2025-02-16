@@ -12,10 +12,6 @@
 
 #include "../../include/push_swap.h"
 
-#include <stdlib.h>
-#include <stdbool.h>
-#include <stdio.h>
-
 static int count_words(char *s, char c)
 {
     int count = 0;

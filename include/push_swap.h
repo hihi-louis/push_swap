@@ -34,7 +34,7 @@ typedef struct s_stack_node
 int error_syntax(char *str);
 int error_duplicate(t_stack_node *a, int n);
 void  free_stack(t_stack_node **stack);
-void  free_error(t_stack_node **a);
+void  free_error(t_stack_node **a, char **argv);
 //Stack initation
 void  init_stack_a(t_stack_node **a, char **argv);
 char  **push_swap_split(char *s, char c);
