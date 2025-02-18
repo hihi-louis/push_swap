@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trietpham <trietpham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 21:36:56 by tripham           #+#    #+#             */
-/*   Updated: 2025/01/27 18:45:09 by trietpham        ###   ########.fr       */
+/*   Updated: 2025/02/18 15:51:45 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,5 @@ int						ft_is_all_white_spaces(char *command);
 void					ft_free_double_p(void **ptr);
 void					ft_free_triple_p(char ***arr);
 
-long ft_atol(const char *str);
+long					ft_atol(const char *str);
 #endif

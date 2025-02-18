@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trietpham <trietpham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 17:29:17 by trietpham         #+#    #+#             */
-/*   Updated: 2025/01/27 18:45:58 by trietpham        ###   ########.fr       */
+/*   Updated: 2025/02/18 15:51:29 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-long ft_atol(const char *s)
+long	ft_atol(const char *s)
 {
-  long	result;
+	long	result;
 	int		sign;
 
 	result = 0;
-	sign = 1; 
+	sign = 1;
 	while (*s == ' ' || *s == '\t' || *s == '\n' || \
 			*s == '\r' || *s == '\f' || *s == '\v')
 		s++;

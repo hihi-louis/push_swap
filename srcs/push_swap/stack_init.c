@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trietpham <trietpham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 18:20:36 by trietpham         #+#    #+#             */
-/*   Updated: 2025/02/04 22:39:55 by trietpham        ###   ########.fr       */
+/*   Updated: 2025/02/18 19:42:56 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void append_node(t_stack_node **stack, int n)
   }
 }
 
-void  init_stack_a(t_stack_node **a, char **argv)
+void  init_stack_a(t_stack_node **a, char **argv, bool allocated)
 {
   long  n;
   int i;
@@ -47,17 +47,23 @@ void  init_stack_a(t_stack_node **a, char **argv)
   while (argv[i])
   {
     if (error_syntax(argv[i]))
-      free_error(a, argv);
+    {
+		if (allocated)
+			ft_free_double_p((void **)argv);
+		free_error(a);
+	}
     n = ft_atol(argv[i]);
-    if (n > INT_MAX || n < INT_MIN)
-      free_error(a, argv);
-    if (error_duplicate(*a, (int)n))
-      free_error(a, argv);
+    if ((n > INT_MAX || n < INT_MIN) || error_duplicate(*a, (int)n))
+    {
+		if (allocated)
+			ft_free_double_p((void **)argv);
+		free_error(a);
+	}
     append_node(a, (int)n);
     i++;
   }
 }
-//Define a function that searches for the cheapest node, that is set by boo
+
 t_stack_node  *get_cheapest(t_stack_node *stack)
 {
   if (!stack)

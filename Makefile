@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: trietpham <trietpham@student.42.fr>        +#+  +:+       +#+         #
+#    By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/08 11:45:55 by trietpham         #+#    #+#              #
-#    Updated: 2025/02/09 12:42:52 by trietpham        ###   ########.fr        #
+#    Updated: 2025/02/18 16:32:53 by tripham          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ LIBFTDIR   := library/libft
 PRINTF_DIR := library/ft_printf
 
 # Source files (ensure proper pathing)
-SRCS := $(SRCDIR)/commands/push.c $(SRCDIR)/commands/rev_rotate.c $(SRCDIR)/commands/rotate.c \
+SRCS := $(SRCDIR)/commands/move.c $(SRCDIR)/commands/push.c $(SRCDIR)/commands/rev_rotate.c $(SRCDIR)/commands/rotate.c \
         $(SRCDIR)/commands/sort_stacks.c $(SRCDIR)/commands/sort_three.c $(SRCDIR)/commands/swap.c \
         $(SRCDIR)/push_swap/handle_error.c $(SRCDIR)/push_swap/init_a_to_b.c $(SRCDIR)/push_swap/init_b_to_a.c \
         $(SRCDIR)/push_swap/push_swap_split.c $(SRCDIR)/push_swap/push_swap.c $(SRCDIR)/push_swap/stack_init.c \
