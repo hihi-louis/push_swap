@@ -6,7 +6,7 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 19:51:00 by tripham           #+#    #+#             */
-/*   Updated: 2025/02/18 15:49:53 by tripham          ###   ########.fr       */
+/*   Updated: 2025/02/19 20:22:43 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_putnbr(int n)
 		len += temp;
 	}
 	if (n >= 10)
-	{	
+	{
 		temp = ft_putnbr(n / 10);
 		if (temp == -1)
 			return (-1);

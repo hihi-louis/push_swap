@@ -6,7 +6,7 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 18:02:26 by trietpham         #+#    #+#             */
-/*   Updated: 2025/02/18 18:15:45 by tripham          ###   ########.fr       */
+/*   Updated: 2025/02/19 20:21:19 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void			sort_three(t_stack_node **a);
 void			sort_stack(t_stack_node **a, t_stack_node **b);
 void			move_a_to_b(t_stack_node **a, t_stack_node **b);
 void			move_b_to_a(t_stack_node **a, t_stack_node **b);
-void		rotate_both(t_stack_node **a, t_stack_node **b,
-						t_stack_node *cheapest_node);
-void		rev_rotate_both(t_stack_node **a, t_stack_node **b,
-							t_stack_node *cheapest_node);
+void			rotate_both(t_stack_node **a, t_stack_node **b,
+					t_stack_node *cheapest_node);
+void			rev_rotate_both(t_stack_node **a, t_stack_node **b,
+					t_stack_node *cheapest_node);
 #endif

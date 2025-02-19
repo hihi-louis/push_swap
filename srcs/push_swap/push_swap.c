@@ -6,7 +6,7 @@
 /*   By: tripham <tripham@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 18:02:29 by trietpham         #+#    #+#             */
-/*   Updated: 2025/02/18 20:16:57 by tripham          ###   ########.fr       */
+/*   Updated: 2025/02/19 19:46:47 by tripham          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,23 @@ static int	parse_arguments(int argc, char ***argv, char ***split_args)
 	return (0);
 }
 
+static void	sort_and_cleanup(t_stack_node **a, t_stack_node **b,
+						char **split_args, bool allocated)
+{
+	if (!stack_sorted((*a)))
+	{
+		if (stack_len((*a)) == 2)
+			sa(a, false);
+		else if (stack_len((*a)) == 3)
+			sort_three(a);
+		else
+			sort_stack(a, b);
+	}
+	free_stack(a);
+	if (allocated)
+		ft_free_double_p((void **)split_args);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack_node	*a;
@@ -45,7 +62,7 @@ int	main(int argc, char **argv)
 	char			**split_args;
 	bool			allocated;
 
-	**split_args = NULL;
+	split_args = NULL;
 	allocated = false;
 	a = NULL;
 	b = NULL;
@@ -54,17 +71,6 @@ int	main(int argc, char **argv)
 	if (split_args)
 		allocated = true;
 	init_stack_a(&a, argv, allocated);
-	if (!stack_sorted(a))
-	{
-		if (stack_len(a) == 2)
-			sa(&a, false);
-		else if (stack_len(a) == 3)
-			sort_three(&a);
-		else
-			sort_stack(&a, &b);
-	}
-	free_stack(&a);
-	if (allocated)
-		ft_free_double_p((void **)argv);
+	sort_and_cleanup(&a, &b, split_args, allocated);
 	return (0);
 }
